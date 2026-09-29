@@ -1,0 +1,2 @@
+function Write-Code($path,$content){[IO.File]::WriteAllText((Join-Path $PWD $path),$content.Replace("`r`n","`n"),[Text.UTF8Encoding]::new($false))}
+function Replace-Code($path,$old,$new){$s=[IO.File]::ReadAllText((Join-Path $PWD $path)).Replace("`r`n","`n");if(!$s.Contains($old)){throw "Missing replacement: $path"};Write-Code $path $s.Replace($old,$new)}

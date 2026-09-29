@@ -1,0 +1,5 @@
+@unless($hideBrand ?? false)<div class="sidebar-brand"><a class="brand" href="{{ route('dashboard') }}"><x-brand-logo size="small" variant="light"/></a></div>@endunless
+<div class="sidebar-body"><p class="sidebar-label">Workspace</p><nav class="sidebar-nav">
+@foreach($navigation as [$label,$icon,$route])<a href="{{ route($route) }}" class="sidebar-link {{ request()->routeIs($route) || ($route==='maintenance.index' && request()->routeIs('maintenance.*')) || ($route==='assets.index' && request()->routeIs('assets.*')) ? 'active':'' }}"><i class="bi {{ $icon }}"></i><span>{{ $label }}</span></a>@endforeach
+<a href="{{ route('profile') }}" class="sidebar-link {{ request()->routeIs('profile')?'active':'' }}"><i class="bi bi-person-circle"></i><span>Profile</span></a></nav><form method="post" action="{{ route('logout') }}" class="mt-4">@csrf<button class="sidebar-link border-0 bg-transparent w-100" type="submit"><i class="bi bi-box-arrow-left"></i> Logout</button></form></div>
+<div class="sidebar-footer"><div class="department-mark">UPTM</div><div><strong>ICT Department</strong><span>Asset Management System</span></div></div>

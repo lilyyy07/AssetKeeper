@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci --include=dev",
+  "buildCommand": "npm run build && node scripts/vercel-static.mjs",
+  "outputDirectory": ".vercel-static",
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.4",
+      "maxDuration": 60,
+      "excludeFiles": "{.env,.env.*,node_modules/**,.git/**,.vercel/**,.vercel-static/**,tests/**,docs/**,storage/**,bootstrap/cache/*.php}"
+    }
+  },
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/api/index.php" }
+  ]
+}

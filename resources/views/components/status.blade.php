@@ -1,0 +1,1 @@
+<span class="status-badge {{ match($status){'Available','Completed','Returned','Active'=>'status-green','Allocated','In Progress'=>'status-blue','Under Maintenance','Pending'=>'status-orange','Disposed','Inactive'=>'status-neutral',default=>'status-red'} }}">{{ $status }}</span>

@@ -1,0 +1,10 @@
+# The supported Apache document root is public/.
+# Protect source/configuration if XAMPP also exposes the parent htdocs directory.
+Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(?!public(?:/|$)).+ - [F,L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+    Require all denied
+</IfModule>
